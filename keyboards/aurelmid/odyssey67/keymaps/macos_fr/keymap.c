@@ -15,6 +15,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+// Keymap: macos_fr
+
 #include QMK_KEYBOARD_H
 
 // Macro declarations
@@ -42,7 +44,9 @@ enum {
     UC_EGRV, // Uppercase è
     UC_OLIG, // Uppercase œ
     SL_EURO, // Euro symbol €
-    SL_DEGR  // Degree symbol °
+    SL_DEGR, // Degree symbol °
+    SL_LGIM, // French left guillemets
+    SL_RGIM  // French right guillemets
 };
 
 // Macro functions
@@ -240,9 +244,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
                 break;
 
-        case SL_DEGR: // Types the Euro symbol €
+        case SL_DEGR: // Types the degree symbol
                 if(record->event.pressed){
                     tap_code16(LOPT(LSFT(KC_8)));
+                } else {
+
+                }
+                break;
+
+        case SL_LGIM: // Types the left guillemets
+                if(record->event.pressed){
+                    tap_code16(LOPT(KC_BSLS));
+                } else {
+
+                }
+                break;
+
+        case SL_RGIM: // Types the right guillemets
+                if(record->event.pressed){
+                    tap_code16(LOPT(LSFT(KC_BSLS)));
                 } else {
 
                 }
@@ -299,7 +319,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┬───┐
      * │   │   │   │   │ € │   │   │   │ ° │   │   │   │   │       │   │
      * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┼───┤
-     * │     │ À │   │ É │ È │   │   │   │   │   │ Œ │   │   │     │   │
+     * │     │ À │   │ É │ È │   │   │   │   │   │ Œ │ « │ » │     │   │
      * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴─────┼───┤
      * │      │   │   │   │   │   │   │   │   │   │   │   │        │   │
      * ├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────┬───┼───┤
@@ -310,7 +330,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [2] = LAYOUT(
         _______, _______, _______, _______, SL_EURO, _______, _______, _______, SL_DEGR, _______, _______, _______, _______, _______, _______,
-        _______, UC_AGRV, _______, UC_EAGU, UC_EGRV, _______, _______, _______, _______, _______, UC_OLIG, _______, _______, _______, _______,
+        _______, UC_AGRV, _______, UC_EAGU, UC_EGRV, _______, _______, _______, _______, _______, UC_OLIG, SL_LGIM, SL_RGIM, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
         _______, _______, _______, UC_CDIL, _______, _______, _______, _______, _______, _______, _______, _______,          _______, _______,
         _______, _______, _______,                   _______,                            _______, _______, _______,          _______, _______
