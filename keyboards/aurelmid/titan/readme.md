@@ -1,12 +1,12 @@
-# titan
+# Titan
 
-![titan](imgur.com image replace me!)
+![Titan](imgur.com image replace me!)
 
 *A short description of the keyboard/project*
 
 * Keyboard Maintainer: [Aurelien Michaud](https://github.com/aurelmid)
-* Hardware Supported: *The PCBs, controllers supported*
-* Hardware Availability: *Links to where you can find this hardware*
+* Hardware Supported: Titan PCB and Frood
+* Hardware Availability: [Titan on GitHub]() and [Frood](https://42keebs.eu/shop/parts/controllers/frood-rp2040-pro-micro-controller/)
 
 Make example for this keyboard (after setting up your build environment):
 
