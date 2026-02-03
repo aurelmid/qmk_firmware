@@ -24,8 +24,6 @@ enum {
     EMPTY = SAFE_RANGE,
     LC_AGRV, // Lowercase à
     LC_ACIR, // Lowercase â
-    LC_ALIG, // Lowercase æ
-    LC_CDIL, // Lowercase ç
     LC_EAGU, // Lowercase é
     LC_EGRV, // Lowercase è
     LC_ECIR, // Lowercase ê
@@ -33,20 +31,13 @@ enum {
     LC_ICIR, // Lowercase î
     LC_ITRA, // Lowercase ï
     LC_OCIR, // Lowercase ô
-    LC_OLIG, // Lowercase œ
     LC_UGRV, // Lowercase ù
     LC_UCIR, // Lowercase û
     LC_UTRA, // Lowercase ü
     LC_YTRA, // Lowercase ÿ
     UC_AGRV, // Uppercase à
-    UC_CDIL, // Uppercase ç
     UC_EAGU, // Uppercase é
     UC_EGRV, // Uppercase è
-    UC_OLIG, // Uppercase œ
-    SL_EURO, // Euro symbol €
-    SL_DEGR, // Degree symbol °
-    SL_LGIM, // French left guillemets
-    SL_RGIM  // French right guillemets
 };
 
 // Macro functions
@@ -65,22 +56,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 if(record->event.pressed){
                     tap_code16(LOPT(KC_I));
                     tap_code(KC_A);
-                } else {
-
-                }
-                break;
-
-        case LC_ALIG: // Types a lowercase æ
-                if(record->event.pressed){
-                    tap_code16(LOPT(KC_QUOTE));
-                } else {
-
-                }
-                break;
-
-        case LC_CDIL: // Types a lowercase ç
-                if(record->event.pressed){
-                    tap_code16(LOPT(KC_C));
                 } else {
 
                 }
@@ -149,14 +124,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
                 break;
 
-        case LC_OLIG: // Types a lowercase œ
-                if(record->event.pressed){
-                    tap_code16(LOPT(KC_Q));
-                } else {
-
-                }
-                break;
-
         case LC_UGRV: // Types a lowercase ù
                 if(record->event.pressed){
                     tap_code16(LOPT(KC_GRV));
@@ -202,14 +169,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
                 break;
 
-        case UC_CDIL: // Types an uppercase Ç
-                if(record->event.pressed){
-                    tap_code16(LOPT(LSFT(KC_C)));
-                } else {
-
-                }
-                break;
-
         case UC_EAGU: // Types an uppercase É
                 if(record->event.pressed){
                     tap_code16(LOPT(KC_E));
@@ -228,49 +187,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
                 break;
 
-        case UC_OLIG: // Types an uppercase Œ
-                if(record->event.pressed){
-                    tap_code16(LOPT(LSFT(KC_Q)));
-                } else {
-
-                }
-                break;
-
-        case SL_EURO: // Types the Euro symbol €
-                if(record->event.pressed){
-                    tap_code16(LOPT(LSFT(KC_2)));
-                } else {
-
-                }
-                break;
-
-        case SL_DEGR: // Types the degree symbol
-                if(record->event.pressed){
-                    tap_code16(LOPT(LSFT(KC_8)));
-                } else {
-
-                }
-                break;
-
-        case SL_LGIM: // Types the left guillemets
-                if(record->event.pressed){
-                    tap_code16(LOPT(KC_BSLS));
-                } else {
-
-                }
-                break;
-
-        case SL_RGIM: // Types the right guillemets
-                if(record->event.pressed){
-                    tap_code16(LOPT(LSFT(KC_BSLS)));
-                } else {
-
-                }
-                break;
-
             }
             return true;
-    };
+    }
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Base
@@ -308,11 +227,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * └────┴────┴────┴────────────────────────┴─────┴─────┴───┴───┴───┘
      */
     [1] = LAYOUT(
-        _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, _______,
-        _______, LC_AGRV, LC_ACIR, LC_EAGU, LC_EGRV, _______, LC_YTRA, LC_UGRV, LC_ICIR, LC_OCIR, LC_OLIG, _______, _______, _______, _______,
-        _______, LC_ALIG, _______, LC_ECIR, LC_ETRA, _______, _______, LC_UCIR, LC_ITRA, _______, _______, _______, _______,          _______,
-        _______, _______, _______, LC_CDIL, _______, _______, _______, LC_UTRA, _______, _______, _______, _______,          _______, _______,
-        QK_BOOT, _______, _______,                   _______,                            _______, _______, _______,          _______, _______
+        _______, KC_F1,          KC_F2,   KC_F3,      KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,     KC_F11,  KC_F12,  _______, _______,
+        _______, LC_AGRV,        LC_ACIR, LC_EAGU,    LC_EGRV, _______, LC_YTRA, LC_UGRV, LC_ICIR, LC_OCIR, LOPT(KC_Q), _______, _______, _______, _______,
+        _______, LOPT(KC_QUOTE), _______, LC_ECIR,    LC_ETRA, _______, _______, LC_UCIR, LC_ITRA, _______, _______,    _______, _______,          _______,
+        _______, _______,        _______, LOPT(KC_C), _______, _______, _______, LC_UTRA, _______, _______, _______,    _______,          _______, _______,
+        QK_BOOT, _______,        _______,                      _______,                            _______, _______,    _______,          _______, _______
     ),
 
     /* Uppercase accents and symbols
@@ -329,10 +248,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * └────┴────┴────┴────────────────────────┴─────┴─────┴───┴───┴───┘
      */
     [2] = LAYOUT(
-        _______, _______, _______, _______, SL_EURO, _______, _______, _______, SL_DEGR, _______, _______, _______, _______, _______, _______,
-        _______, UC_AGRV, _______, UC_EAGU, UC_EGRV, _______, _______, _______, _______, _______, UC_OLIG, SL_LGIM, SL_RGIM, _______, _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
-        _______, _______, _______, UC_CDIL, _______, _______, _______, _______, _______, _______, _______, _______,          _______, _______,
-        _______, _______, _______,                   _______,                            _______, _______, _______,          _______, _______
+        _______, _______, _______, _______,   LSA(KC_2), _______, _______, _______, LSA(KC_8), _______, _______,   _______,       _______,      _______, _______,
+        _______, UC_AGRV, _______, UC_EAGU,   UC_EGRV,   _______, _______, _______, _______,   _______, LSA(KC_Q), LOPT(KC_BSLS), LSA(KC_BSLS), _______, _______,
+        _______, _______, _______, _______,   _______,   _______, _______, _______, _______,   _______, _______,   _______,       _______,               _______,
+        _______, _______, _______, LSA(KC_C), _______,   _______, _______, _______, _______,   _______, _______,   _______,                     _______, _______,
+        _______, _______, _______,                       _______,                              _______, _______,   _______,                     _______, _______
     ),
 };
