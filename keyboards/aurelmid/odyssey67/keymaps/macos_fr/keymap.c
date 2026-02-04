@@ -13,9 +13,14 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
 
-// Keymap: macos_fr
+Keymap: macos_fr
+Features:
+- AZERTY layout for French typing
+- Layer 1: F-keys and lowercase French accents
+- Layer 2: Uppercase French accents and special symbols
+
+*/
 
 #include QMK_KEYBOARD_H
 
@@ -35,9 +40,9 @@ enum {
     LC_UCIR, // Lowercase û
     LC_UTRA, // Lowercase ü
     LC_YTRA, // Lowercase ÿ
-    UC_AGRV, // Uppercase à
-    UC_EAGU, // Uppercase é
-    UC_EGRV, // Uppercase è
+    UC_AGRV, // Uppercase À
+    UC_EAGU, // Uppercase É
+    UC_EGRV, // Uppercase È
 };
 
 // Macro functions
@@ -213,7 +218,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LCTL,   KC_LOPT, KC_LCMD,                   KC_SPC,                             KC_RCMD, KC_ROPT, KC_LEFT,               KC_DOWN,    KC_RGHT
     ),
 
-    /* FN keys, lowercase accents and reset
+    /* F-keys, lowercase French accents and reset
      * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┬───┐
      * │   │F1 │F2 │F3 │F4 │F5 │F6 │F7 │F8 │F9 │F10│F11│F12│       │   │
      * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┼───┤
@@ -234,7 +239,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         QK_BOOT, _______,        _______,                      _______,                            _______, _______,    _______,          _______, _______
     ),
 
-    /* Uppercase accents and symbols
+    /* Uppercase French accents and special symbols
      * ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┬───┐
      * │   │   │   │   │ € │   │   │   │ ° │   │   │   │   │       │   │
      * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┼───┤
