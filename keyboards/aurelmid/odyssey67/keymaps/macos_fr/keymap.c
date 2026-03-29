@@ -16,7 +16,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 Keymap: macos_fr
 Features:
-- AZERTY layout for French typing
 - Layer 1: F-keys and lowercase French accents
 - Layer 2: Uppercase French accents and special symbols
 
